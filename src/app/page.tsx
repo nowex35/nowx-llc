@@ -1,95 +1,71 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div id="home" style={{ maxWidth: 1040, margin: "0 auto", padding: "40px 20px" }}>
+      <section style={{ padding: "60px 0" }}>
+        <h1 style={{ fontSize: 36, lineHeight: 1.2, marginBottom: 12, color: "var(--foreground)" }}>合同会社nowX</h1>
+        <p style={{ fontSize: 18, opacity: 0.9, color: "var(--foreground)" }}>Innovation Engineering Firm</p>
+      </section>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+      <section id="about" style={{ padding: "60px 0", borderTop: "1px solid var(--border-color)" }}>
+        <h2 style={{ fontSize: 24, marginBottom: 12 }}>About</h2>
+        <p style={{ lineHeight: 1.9 }}>
+          合同会社nowXは、Web/アプリのシステム設計・開発や起業アイデアの壁打ち、イベント運営を行う学生起業のエンジニアリングファームです。
+          スタートアップを中心に、スピード感が求められる開発全般をご支援します。
+        </p>
+      </section>
+
+      <section id="works" style={{ padding: "60px 0", borderTop: "1px solid var(--border-color)" }}>
+        <h2 style={{ fontSize: 24, marginBottom: 12 }}>Works</h2>
+        <div style={{ display: "grid", gap: 24 }}>
+          <div>
+            <h3 style={{ fontSize: 18, marginBottom: 8 }}>レンタルCTO</h3>
+            <p style={{ lineHeight: 1.9 }}>
+              事業に最適な開発方針の設計やチームビルディングをCTOの役割としてご提供。
+              創業初期のスタートアップ向けに無料相談も承っています。
+            </p>
+            <p style={{ marginTop: 6, fontSize: 14, opacity: 0.8 }}>キーワード: CTO / スタートアップ</p>
+          </div>
+          <div>
+            <h3 style={{ fontSize: 18, marginBottom: 8 }}>Webシステム開発</h3>
+            <p style={{ lineHeight: 1.9 }}>
+              要件定義から設計、フロントエンド・バックエンド開発まで一気通貫で対応。
+              フルスタックならではのスピードで提供します。
+            </p>
+            <p style={{ marginTop: 6, fontSize: 14, opacity: 0.8 }}>キーワード: Go / Python / Ruby / TypeScript, SPA(React/Vue/Next.js/Nuxt), サーバレス/マイクロサービス</p>
+          </div>
+          <div>
+            <h3 style={{ fontSize: 18, marginBottom: 8 }}>起業アイデアの壁打ち</h3>
+            <p style={{ lineHeight: 1.9 }}>
+              起業アイデアの壁打ちを経験豊富なエンジニアが支援します。
+            </p>
+            <p style={{ marginTop: 6, fontSize: 14, opacity: 0.8 }}>キーワード: 起業アイデア / 壁打ち / 学生起業</p>
+          </div>
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      <section id="team" style={{ padding: "60px 0", borderTop: "1px solid var(--border-color)" }}>
+        <h2 style={{ fontSize: 24, marginBottom: 12 }}>Members</h2>
+        <div style={{ display: "grid", gap: 16 }}>
+            <span>代表</span><h3 style={{ fontSize: 18 }}>相澤 颯</h3>
+        </div>
+      </section>
+
+      <section id="history" style={{ padding: "60px 0", borderTop: "1px solid var(--border-color)" }}>
+        <h2 style={{ fontSize: 24, marginBottom: 12 }}>History</h2>
+        <ul style={{ lineHeight: 1.9 }}>
+          <li>2025.10 設立</li>
+        </ul>
+      </section>
+
+      <section id="contact" style={{ padding: "60px 0", borderTop: "1px solid var(--border-color)" }}>
+        <h2 style={{ fontSize: 24, marginBottom: 12 }}>Contact</h2>
+        <p style={{ lineHeight: 1.9 }}>お問い合わせはメールにてご連絡ください。</p>
+        <p>
+          <a href="mailto:info@nowx-llc.com" style={{ textDecoration: "underline" }}>
+            info@nowx-llc.com
+          </a>
+        </p>
+      </section>
     </div>
   );
 }

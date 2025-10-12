@@ -17,28 +17,29 @@ export default function Home() {
       <section id="works" style={{ padding: "60px 0", borderTop: "1px solid var(--border-color)" }}>
         <h2 style={{ fontSize: 24, marginBottom: 12 }}>Works</h2>
         <div style={{ display: "grid", gap: 24 }}>
-          <div>
-            <h3 style={{ fontSize: 18, marginBottom: 8 }}>レンタルCTO</h3>
-            <p style={{ lineHeight: 1.9 }}>
-              事業に最適な開発方針の設計やチームビルディングをCTOの役割としてご提供。
-              創業初期のスタートアップ向けに無料相談も承っています。
-            </p>
-            <p style={{ marginTop: 6, fontSize: 14, opacity: 0.8 }}>キーワード: CTO / スタートアップ</p>
-          </div>
-          <div>
+        <div>
             <h3 style={{ fontSize: 18, marginBottom: 8 }}>Webシステム開発</h3>
             <p style={{ lineHeight: 1.9 }}>
               要件定義から設計、フロントエンド・バックエンド開発まで一気通貫で対応。
               フルスタックならではのスピードで提供します。
             </p>
-            <p style={{ marginTop: 6, fontSize: 14, opacity: 0.8 }}>キーワード: Go / Python / Ruby / TypeScript, SPA(React/Vue/Next.js/Nuxt), サーバレス/マイクロサービス</p>
+            <p style={{ marginTop: 6, fontSize: 14, opacity: 0.8 }}>キーワード: Go / Python / Ruby / TypeScript / マイクロサービス</p>
           </div>
+          <div>
+            <h3 style={{ fontSize: 18, marginBottom: 8 }}>レンタルCTO</h3>
+            <p style={{ lineHeight: 1.9 }}>
+              事業に最適な開発方針の設計やナレッジの共有をCTOの役割としてご提供。
+              技術担当者不在の学生起業チーム等に最適です。
+            </p>
+            <p style={{ marginTop: 6, fontSize: 14, opacity: 0.8 }}>キーワード: CTO / 学生起業 / スタートアップ</p>
+          </div>
+
           <div>
             <h3 style={{ fontSize: 18, marginBottom: 8 }}>起業アイデアの壁打ち</h3>
             <p style={{ lineHeight: 1.9 }}>
-              起業アイデアの壁打ちを経験豊富なエンジニアが支援します。
+              起業アイデアの壁打ちを特に技術的な側面からエンジニアが支援します。
             </p>
-            <p style={{ marginTop: 6, fontSize: 14, opacity: 0.8 }}>キーワード: 起業アイデア / 壁打ち / 学生起業</p>
+            <p style={{ marginTop: 6, fontSize: 14, opacity: 0.8 }}>キーワード: 起業アイデア / 壁打ち </p>
           </div>
         </div>
       </section>

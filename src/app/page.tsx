@@ -62,8 +62,8 @@ export default function Home() {
         <h2 style={{ fontSize: 24, marginBottom: 12 }}>Contact</h2>
         <p style={{ lineHeight: 1.9 }}>お問い合わせはメールにてご連絡ください。</p>
         <p>
-          <a href="mailto:info@nowx-llc.com" style={{ textDecoration: "underline" }}>
-            info@nowx-llc.com
+          <a href="mailto:hayate-aizawa@nowx-llc.com" style={{ textDecoration: "underline" }}>
+            代表者メール:hayate-aizawa@nowx-llc.com
           </a>
         </p>
       </section>

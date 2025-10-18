@@ -1,7 +1,15 @@
 :root {
+  /* Base */
   --background: #f6f6f6; /* rgb(246,246,246) */
   --foreground: #333333; /* rgb(51,51,51) */
-  --border-color: rgba(51, 51, 51, 0.18);
+
+  /* Brand */
+  --color-primary: #3D3D99; /* メインカラー */
+  --color-secondary: #9191B5; /* サブカラー */
+
+  /* Surfaces & lines */
+  /* セカンダリカラーをベースに薄い線色を生成 */
+  --border-color: color-mix(in srgb, var(--color-secondary) 28%, transparent);
 }
 
 html,
@@ -41,7 +49,85 @@ body {
 
 a {
   color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in srgb, var(--color-primary) 45%, transparent);
+  transition: color 120ms ease, text-decoration-color 120ms ease;
+}
+
+a:hover {
+  color: var(--color-primary);
+  text-decoration-color: var(--color-primary);
+}
+
+/* 明示的なナビゲーションリンク用（layout.tsxのclassNameと連携） */
+.nav-link {
+  color: var(--foreground);
   text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+.nav-link:hover {
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-secondary) 16%, transparent);
+}
+.nav-link:focus-visible {
+  outline: 3px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
+/* CTA button (主色ピル) */
+.btn-cta {
+  background: var(--color-primary);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 25%, transparent);
+  text-decoration: none;
+}
+.btn-cta:hover {
+  background: color-mix(in srgb, var(--color-primary) 88%, black 12%);
+}
+.btn-cta:focus-visible {
+  outline: 3px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
+/* 見出しのアクセントカラー */
+h1 {
+  color: var(--color-primary);
+}
+h2 {
+  color: var(--color-primary);
+}
+h3 {
+  color: black;
+}
+
+/* Cards */
+.cards {
+  display: grid;
+  gap: 16px;
+}
+@media (min-width: 720px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.card {
+  padding: 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: transparent;
+  transition: background 120ms ease, border-color 120ms ease, transform 120ms ease;
+}
+.card:hover {
+  background: color-mix(in srgb, var(--color-secondary) 12%, transparent);
+  border-color: color-mix(in srgb, var(--color-secondary) 40%, transparent);
+}
+.card:focus-within {
+  outline: 3px solid var(--color-secondary);
+  outline-offset: 2px;
 }
 
 @media (prefers-color-scheme: light) {

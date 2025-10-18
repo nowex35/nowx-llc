@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -16,6 +17,10 @@ export const metadata: Metadata = {
   title: "合同会社nowX | Innovation Engineering Firm",
   description:
     "合同会社nowXは、Web/アプリのシステム設計・開発や起業アイデアの壁打ち、イベント運営を行う学生起業のエンジニアリングファームです。",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#3D3D99",
 };
 
 export default function RootLayout({
@@ -41,13 +46,26 @@ export default function RootLayout({
             alignItems: "center",
             justifyContent: "space-between",
           }}>
-            <a href="#home" style={{ fontWeight: 700, color: "var(--foreground)" }}>nowX</a>
-            <div style={{ display: "flex", gap: 16, color: "var(--foreground)" }}>
-              <a href="#about">About</a>
-              <a href="#works">Works</a>
-              <a href="#team">Members</a>
-              <a href="#history">History</a>
-              <a href="#contact">Contact</a>
+            <a
+              href="#home"
+              aria-label="nowX ホーム"
+              style={{ display: "inline-flex", alignItems: "center", textDecoration: "none" }}
+            >
+              <Image
+                src="/nowX_logo_opa.svg"
+                alt="nowX ロゴ"
+                width={120}
+                height={28}
+                priority
+                style={{ height: "28px", width: "auto" }}
+              />
+            </a>
+            <div style={{ display: "flex", gap: 12, color: "var(--foreground)", alignItems: "center" }}>
+              <a className="nav-link" href="#about">About</a>
+              <a className="nav-link" href="#works">Works</a>
+              <a className="nav-link" href="#team">Members</a>
+               <a className="nav-link" href="#history">History</a>
+              <a className="btn-cta" href="#contact">Contact</a>
             </div>
           </nav>
         </header>
@@ -55,13 +73,13 @@ export default function RootLayout({
         <footer style={{
           marginTop: 80,
           borderTop: "1px solid var(--border-color)",
-          padding: "24px 20px",
+          padding: "32px 20px",
         }}>
           <div style={{ maxWidth: 1040, margin: "0 auto", color: "var(--foreground)" }}>
             <p style={{ fontWeight: 700 }}>合同会社nowX</p>
             <p>代表者：相澤颯</p>
             <p>〒305-0005 茨城県つくば市天久保3丁目14番地11 ヴィレッジコスモ101</p>
-            <p style={{ marginTop: 8, fontSize: 12, opacity: 0.8 }}>© nowX LLC. All Rights Reserved.</p>
+            <p style={{ marginTop: 12, fontSize: 12, opacity: 0.8 }}>© nowX LLC. All Rights Reserved.</p>
           </div>
         </footer>
       </body>

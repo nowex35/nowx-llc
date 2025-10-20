@@ -1,16 +1,17 @@
 export default function Home() {
   return (
     <div id="home" style={{ maxWidth: 1040, margin: "0 auto", padding: "40px 20px" }}>
+      <h1 style={{ position: "absolute", left: "-9999px", top: "-9999px" }}>合同会社nowX - つくば市のweb開発企業</h1>
       <section style={{ padding: "60px 0" }}>
-        <h1 style={{ fontSize: 36, lineHeight: 1.2, marginBottom: 12 }}>合同会社nowX</h1>
-        <p style={{ fontSize: 18, opacity: 0.9 }}>Innovation Engineering Firm</p>
+        <div style={{ fontSize: 36, lineHeight: 1.2, marginBottom: 12, fontWeight: "bold" }}>合同会社nowX</div>
+        <p style={{ fontSize: 18, opacity: 0.9 }}>Engineering Firm at Tsukuba</p>
       </section>
 
       <section id="about" style={{ padding: "60px 0", borderTop: "1px solid var(--border-color)" }}>
         <h2 style={{ fontSize: 24, marginBottom: 12 }}>About</h2>
         <p style={{ lineHeight: 1.9 }}>
-          合同会社nowXは、Web/アプリのシステム設計・開発や起業アイデアの壁打ち、イベント運営を行う学生起業のエンジニアリングファームです。
-          スタートアップを中心に、スピード感が求められる開発全般をご支援します。
+          合同会社nowXは、Web/アプリのシステム設計・開発や起業アイデアの壁打ちを行うつくば市のエンジニアリングファームです。
+          学生起業・スタートアップを中心に、スピード感が求められる開発全般をご支援します。
         </p>
       </section>
 

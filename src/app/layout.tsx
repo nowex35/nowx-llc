@@ -17,7 +17,6 @@ export const metadata: Metadata = {
   title: "合同会社nowX | Innovation Engineering Firm",
   description:
     "合同会社nowXは、Web/アプリのシステム設計・開発や起業アイデアの壁打ち、イベント運営を行う学生起業のエンジニアリングファームです。スタートアップを中心に、スピード感が求められる開発全般をご支援します。",
-  keywords: ["合同会社nowX", "nowX", "エンジニアリングファーム", "Web開発", "アプリ開発", "システム設計", "スタートアップ", "レンタルCTO", "起業支援", "つくば", "学生起業"],
   authors: [{ name: "合同会社nowX" }],
   creator: "合同会社nowX",
   publisher: "合同会社nowX",
@@ -25,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ja_JP",
-    url: "https://nowx-llc.com",
+    url: "https://www.nowx-llc.com",
     siteName: "合同会社nowX",
     title: "合同会社nowX | Innovation Engineering Firm",
     description: "合同会社nowXは、Web/アプリのシステム設計・開発や起業アイデアの壁打ち、イベント運営を行う学生起業のエンジニアリングファームです。",
@@ -45,7 +44,7 @@ export const metadata: Metadata = {
     images: ["/nowX_logo_opa.svg"],
   },
   alternates: {
-    canonical: "https://nowx-llc.com",
+    canonical: "https://www.nowx-llc.com",
   },
 };
 
@@ -84,8 +83,10 @@ export default function RootLayout({
               <Image
                 src="/nowX_logo_opa.svg"
                 alt="nowX ロゴ"
+                title="nowX ロゴ"
                 width={120}
                 height={28}
+                loading="eager"
                 priority
                 style={{ height: "28px", width: "auto" }}
               />
@@ -107,8 +108,8 @@ export default function RootLayout({
               "@type": "Organization",
               "name": "合同会社nowX",
               "alternateName": "nowX LLC",
-              "url": "https://nowx-llc.com",
-              "logo": "https://nowx-llc.com/nowX_logo_opa.svg",
+              "url": "https://www.nowx-llc.com",
+              "logo": "https://www.nowx-llc.com/nowX_logo_opa.svg",
               "description": "合同会社nowXは、Web/アプリのシステム設計・開発や起業アイデアの壁打ち、イベント運営を行う学生起業のエンジニアリングファームです。",
               "founder": {
                 "@type": "Person",

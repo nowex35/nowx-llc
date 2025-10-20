@@ -16,7 +16,37 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "合同会社nowX | Innovation Engineering Firm",
   description:
-    "合同会社nowXは、Web/アプリのシステム設計・開発や起業アイデアの壁打ち、イベント運営を行う学生起業のエンジニアリングファームです。",
+    "合同会社nowXは、Web/アプリのシステム設計・開発や起業アイデアの壁打ち、イベント運営を行う学生起業のエンジニアリングファームです。スタートアップを中心に、スピード感が求められる開発全般をご支援します。",
+  keywords: ["合同会社nowX", "nowX", "エンジニアリングファーム", "Web開発", "アプリ開発", "システム設計", "スタートアップ", "レンタルCTO", "起業支援", "つくば", "学生起業"],
+  authors: [{ name: "合同会社nowX" }],
+  creator: "合同会社nowX",
+  publisher: "合同会社nowX",
+  robots: "index, follow",
+  openGraph: {
+    type: "website",
+    locale: "ja_JP",
+    url: "https://nowx-llc.com",
+    siteName: "合同会社nowX",
+    title: "合同会社nowX | Innovation Engineering Firm",
+    description: "合同会社nowXは、Web/アプリのシステム設計・開発や起業アイデアの壁打ち、イベント運営を行う学生起業のエンジニアリングファームです。",
+    images: [
+      {
+        url: "/nowX_logo_opa.svg",
+        width: 1200,
+        height: 630,
+        alt: "合同会社nowX ロゴ",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "合同会社nowX | Innovation Engineering Firm",
+    description: "合同会社nowXは、Web/アプリのシステム設計・開発や起業アイデアの壁打ち、イベント運営を行う学生起業のエンジニアリングファームです。",
+    images: ["/nowX_logo_opa.svg"],
+  },
+  alternates: {
+    canonical: "https://nowx-llc.com",
+  },
 };
 
 export const viewport: Viewport = {
@@ -69,6 +99,53 @@ export default function RootLayout({
             </div>
           </nav>
         </header>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "合同会社nowX",
+              "alternateName": "nowX LLC",
+              "url": "https://nowx-llc.com",
+              "logo": "https://nowx-llc.com/nowX_logo_opa.svg",
+              "description": "合同会社nowXは、Web/アプリのシステム設計・開発や起業アイデアの壁打ち、イベント運営を行う学生起業のエンジニアリングファームです。",
+              "founder": {
+                "@type": "Person",
+                "name": "相澤颯",
+                "jobTitle": "代表"
+              },
+              "foundingDate": "2025-10",
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "JP",
+                "addressRegion": "茨城県",
+                "addressLocality": "つくば市",
+                "streetAddress": "天久保3丁目14番地11 ヴィレッジコスモ101",
+                "postalCode": "305-0005"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "email": "hayate-aizawa@nowx-llc.com",
+                "contactType": "customer service"
+              },
+              "sameAs": [],
+              "knowsAbout": [
+                "Web開発",
+                "アプリ開発",
+                "システム設計",
+                "スタートアップ支援",
+                "レンタルCTO",
+                "起業支援"
+              ],
+              "serviceType": [
+                "Webシステム開発",
+                "レンタルCTO",
+                "起業アイデアの壁打ち"
+              ]
+            })
+          }}
+        />
         <main>{children}</main>
         <footer style={{
           marginTop: 80,

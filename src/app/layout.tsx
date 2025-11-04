@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "合同会社nowX | Innovation Engineering Firm",
+  title: "合同会社nowX",
   description:
     "合同会社nowXは、Web/アプリのシステム設計・開発や起業アイデアの壁打ち、イベント運営を行う学生起業のエンジニアリングファームです。スタートアップを中心に、スピード感が求められる開発全般をご支援します。",
   authors: [{ name: "合同会社nowX" }],
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     locale: "ja_JP",
     url: "https://www.nowx-llc.com",
     siteName: "合同会社nowX",
-    title: "合同会社nowX | Innovation Engineering Firm",
+    title: "合同会社nowX",
     description: "合同会社nowXは、Web/アプリのシステム設計・開発や起業アイデアの壁打ち、イベント運営を行う学生起業のエンジニアリングファームです。",
     images: [
       {
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "合同会社nowX | Innovation Engineering Firm",
+    title: "合同会社nowX",
     description: "合同会社nowXは、Web/アプリのシステム設計・開発や起業アイデアの壁打ち、イベント運営を行う学生起業のエンジニアリングファームです。",
     images: ["/nowX_logo_opa.svg"],
   },
@@ -95,7 +95,7 @@ export default function RootLayout({
               <a className="nav-link" href="#about">About</a>
               <a className="nav-link" href="#works">Works</a>
               <a className="nav-link" href="#team">Members</a>
-               <a className="nav-link" href="#history">History</a>
+              <a className="nav-link" href="#history">History</a>
               <a className="btn-cta" href="#contact">Contact</a>
             </div>
           </nav>

@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import ScrollProgress from "./components/ScrollProgress";
+import MobileMenu from "./components/MobileMenu";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -67,6 +69,15 @@ export default function RootLayout({
           background: "var(--background)",
           borderBottom: "1px solid var(--border-color)",
         }}>
+          <div style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            height: "3px",
+            background: "linear-gradient(90deg, var(--color-primary), var(--color-secondary))",
+            transition: "width 0.1s ease",
+            zIndex: 1,
+          }} id="scroll-progress" />
           <nav style={{
             maxWidth: 1040,
             margin: "0 auto",
@@ -91,13 +102,14 @@ export default function RootLayout({
                 style={{ height: "28px", width: "auto" }}
               />
             </a>
-            <div style={{ display: "flex", gap: 12, color: "var(--foreground)", alignItems: "center" }}>
+            <div className="desktop-nav" style={{ display: "flex", gap: 12, color: "var(--foreground)", alignItems: "center" }}>
               <a className="nav-link" href="#about">About</a>
               <a className="nav-link" href="#works">Works</a>
               <a className="nav-link" href="#team">Members</a>
               <a className="nav-link" href="#history">History</a>
               <a className="btn-cta" href="#contact">Contact</a>
             </div>
+            <MobileMenu />
           </nav>
         </header>
         <script
@@ -147,6 +159,7 @@ export default function RootLayout({
             })
           }}
         />
+        <ScrollProgress />
         <main>{children}</main>
         <footer style={{
           marginTop: 80,

@@ -20,10 +20,23 @@ body {
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  background: var(--background) url('/img/office.jpg') no-repeat center center fixed;
+  background-size: cover;
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(246, 246, 246, 0.85);
+  z-index: -1;
 }
 
 /* Utilities */
@@ -119,19 +132,246 @@ h3 {
   border: 1px solid var(--border-color);
   border-radius: 12px;
   background: transparent;
-  transition: background 120ms ease, border-color 120ms ease, transform 120ms ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(61, 61, 153, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
 .card:hover {
   background: color-mix(in srgb, var(--color-secondary) 12%, transparent);
   border-color: color-mix(in srgb, var(--color-secondary) 40%, transparent);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px color-mix(in srgb, var(--color-secondary) 20%, transparent);
+}
+
+.card:hover::before {
+  left: 100%;
 }
 .card:focus-within {
   outline: 3px solid var(--color-secondary);
   outline-offset: 2px;
 }
 
+/* Animations */
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+.fade-in-up {
+  opacity: 0;
+  transition: opacity 0.8s ease-out;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+}
+
+.typing-animation {
+  overflow: hidden;
+  border-right: 2px solid var(--color-primary);
+  white-space: nowrap;
+  animation: typewriter 2s steps(20) 1s both, blink 1s infinite;
+}
+
+.parallax {
+  transition: transform 0.1s ease-out;
+}
+
+.stagger-animation {
+  transition-delay: 0.1s;
+}
+
+.stagger-animation:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.stagger-animation:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
 @media (prefers-color-scheme: light) {
   html {
     color-scheme: light;
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  /* Hide desktop navigation on mobile */
+  .desktop-nav {
+    display: none !important;
+  }
+
+  /* Show mobile menu elements */
+  .mobile-menu-button {
+    display: flex !important;
+  }
+
+  .mobile-menu-overlay {
+    display: block !important;
+  }
+
+  .mobile-menu {
+    display: flex !important;
+  }
+
+  /* Mobile header adjustments */
+  header nav {
+    padding: 12px 16px !important;
+  }
+
+  /* Mobile typography */
+  h1 {
+    font-size: 28px !important;
+  }
+
+  h2 {
+    font-size: 20px !important;
+  }
+
+  h3 {
+    font-size: 16px !important;
+  }
+
+  /* Mobile content spacing */
+  .section {
+    padding: 40px 0 !important;
+  }
+
+  /* Mobile card adjustments */
+  .cards {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Mobile text adjustments */
+  p {
+    font-size: 14px !important;
+  }
+
+  /* Mobile container */
+  .container {
+    padding: 0 16px !important;
+  }
+
+  /* Mobile CTA button */
+  .btn-cta {
+    padding: 10px 16px !important;
+    font-size: 14px !important;
+  }
+
+  /* Mobile nav links */
+  .nav-link {
+    font-size: 14px !important;
+    padding: 8px 12px !important;
+  }
+
+  /* Mobile footer adjustments */
+  footer {
+    margin-top: 40px !important;
+    padding: 20px 16px !important;
+  }
+
+  footer p {
+    font-size: 12px !important;
+    margin-bottom: 8px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small screens */
+  header nav {
+    padding: 8px 12px !important;
+  }
+
+  h1 {
+    font-size: 24px !important;
+  }
+
+  h2 {
+    font-size: 18px !important;
+  }
+
+  p {
+    font-size: 13px !important;
+  }
+
+  .container {
+    padding: 0 12px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  .fade-in-up {
+    opacity: 1;
+    transition: none;
+  }
+  
+  .typing-animation {
+    animation: none;
+    border-right: none;
   }
 }

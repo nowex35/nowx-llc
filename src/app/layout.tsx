@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import ScrollProgress from "./components/ScrollProgress";
 import MobileMenu from "./components/MobileMenu";
 
 const geistSans = Geist({
@@ -63,21 +62,15 @@ export default function RootLayout({
     <html lang="ja">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <header style={{
-          position: "sticky",
+          position: "fixed",
           top: 0,
+          left: 0,
+          right: 0,
           zIndex: 50,
-          background: "var(--background)",
+          background: "rgba(246, 246, 246, 0.8)",
+          backdropFilter: "blur(10px)",
           borderBottom: "1px solid var(--border-color)",
         }}>
-          <div style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            height: "3px",
-            background: "linear-gradient(90deg, var(--color-primary), var(--color-secondary))",
-            transition: "width 0.1s ease",
-            zIndex: 1,
-          }} id="scroll-progress" />
           <nav style={{
             maxWidth: 1040,
             margin: "0 auto",
@@ -159,7 +152,6 @@ export default function RootLayout({
             })
           }}
         />
-        <ScrollProgress />
         <main>{children}</main>
         <footer style={{
           marginTop: 80,

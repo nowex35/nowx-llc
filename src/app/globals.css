@@ -26,6 +26,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
+  padding-top: 0; /* Remove padding since header is transparent */
 }
 
 body::before {
@@ -255,6 +256,14 @@ html {
   }
 }
 
+/* Desktop responsive */
+@media (min-width: 769px) {
+  /* Hide mobile menu button on desktop */
+  .mobile-menu-button {
+    display: none !important;
+  }
+}
+
 /* Mobile responsive */
 @media (max-width: 768px) {
   /* Hide desktop navigation on mobile */
@@ -267,13 +276,7 @@ html {
     display: flex !important;
   }
 
-  .mobile-menu-overlay {
-    display: block !important;
-  }
-
-  .mobile-menu {
-    display: flex !important;
-  }
+  /* Mobile menu is controlled by component state, not CSS */
 
   /* Mobile header adjustments */
   header nav {
@@ -308,9 +311,9 @@ html {
     font-size: 14px !important;
   }
 
-  /* Mobile container */
+  /* Mobile container - adjust padding for fixed header */
   .container {
-    padding: 0 16px !important;
+    padding: 70px 16px 40px !important;
   }
 
   /* Mobile CTA button */
@@ -356,7 +359,7 @@ html {
   }
 
   .container {
-    padding: 0 12px !important;
+    padding: 60px 12px 40px !important;
   }
 }
 
@@ -364,14 +367,45 @@ html {
   html {
     scroll-behavior: auto;
   }
-  
+
   .fade-in-up {
     opacity: 1;
     transition: none;
   }
-  
+
   .typing-animation {
     animation: none;
     border-right: none;
+  }
+}
+
+/* Mobile menu animations */
+.mobile-menu-overlay {
+  background: rgba(0, 0, 0, 0.0);
+  opacity: 0;
+  transition: opacity 280ms cubic-bezier(0.4, 0, 0.2, 1), background 280ms ease;
+}
+.mobile-menu-overlay.open {
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 1;
+}
+
+.mobile-menu {
+  transform: translateX(100%);
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: transform 280ms cubic-bezier(0.4, 0, 0.2, 1), opacity 220ms ease;
+}
+.mobile-menu.open {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu-overlay, .mobile-menu,
+  .mobile-menu-overlay.open, .mobile-menu.open {
+    transition: none !important;
+    opacity: 1;
+    transform: none;
   }
 }

@@ -1,14 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-
-interface TypewriterTextProps {
-  text: string;
-  delay?: number;
-  speed?: number;
-  className?: string;
-  style?: React.CSSProperties;
-}
+import type { TypewriterTextProps } from '../types';
 
 export default function TypewriterText({ 
   text, 

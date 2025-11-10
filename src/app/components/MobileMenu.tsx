@@ -2,14 +2,20 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { NAVIGATION_LINKS, ANIMATION_DURATION, Z_INDEX, LAYOUT_CONSTANTS } from '../constants';
+import type { MobileMenuState } from '../types';
 
 export default function MobileMenu() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [menuState, setMenuState] = useState<MobileMenuState>({
+    isOpen: false,
+    shouldRender: false,
+    closeRect: null,
+  });
   const [portalEl, setPortalEl] = useState<HTMLElement | null>(null);
-  const [shouldRender, setShouldRender] = useState(false); // アニメーション用マウント制御
   const closeTimerRef = useRef<number | null>(null);
   const btnRef = useRef<HTMLButtonElement | null>(null);
-  const [closeRect, setCloseRect] = useState<{ top: number; left: number; width: number; height: number } | null>(null);
+
+  const { isOpen, shouldRender, closeRect } = menuState;
 
   useEffect(() => {
     if (typeof document !== 'undefined') {
@@ -31,35 +37,36 @@ export default function MobileMenu() {
     };
   }, [isOpen, portalEl]);
 
+  const updateCloseButtonPosition = () => {
+    if (btnRef.current) {
+      const rect = btnRef.current.getBoundingClientRect();
+      setMenuState(prev => ({
+        ...prev,
+        closeRect: { top: rect.top, left: rect.left, width: rect.width, height: rect.height }
+      }));
+    }
+  };
+
   // マウント制御（入退場アニメーション）
   useEffect(() => {
     if (isOpen) {
-      // 開くときは即マウント
       if (closeTimerRef.current) {
         window.clearTimeout(closeTimerRef.current);
         closeTimerRef.current = null;
       }
-      setShouldRender(true);
-      // ハンバーガー位置を取得
-      const updatePos = () => {
-        if (btnRef.current) {
-          const r = btnRef.current.getBoundingClientRect();
-          setCloseRect({ top: r.top, left: r.left, width: r.width, height: r.height });
-        }
-      };
-      updatePos();
-      window.addEventListener('resize', updatePos);
-      window.addEventListener('scroll', updatePos, { passive: true });
+      setMenuState(prev => ({ ...prev, shouldRender: true }));
+      updateCloseButtonPosition();
+      window.addEventListener('resize', updateCloseButtonPosition);
+      window.addEventListener('scroll', updateCloseButtonPosition, { passive: true });
       return () => {
-        window.removeEventListener('resize', updatePos);
-        window.removeEventListener('scroll', updatePos);
+        window.removeEventListener('resize', updateCloseButtonPosition);
+        window.removeEventListener('scroll', updateCloseButtonPosition);
       };
     } else if (shouldRender) {
-      // 閉じるときはアニメーション時間だけ残す
       closeTimerRef.current = window.setTimeout(() => {
-        setShouldRender(false);
+        setMenuState(prev => ({ ...prev, shouldRender: false }));
         closeTimerRef.current = null;
-      }, 280); // panelのtransitionに合わせる
+      }, ANIMATION_DURATION.MOBILE_MENU);
     }
     return () => {
       if (closeTimerRef.current) {
@@ -74,78 +81,33 @@ export default function MobileMenu() {
       {/* Hamburger Button（ヘッダー内に配置される） */}
       <button
         ref={btnRef}
-        onClick={() => setIsOpen(v => !v)}
-        className="mobile-menu-button"
-        style={{
-          flexDirection: 'column',
-          justifyContent: 'space-around',
-          width: '24px',
-          height: '18px',
-          background: 'transparent',
-          border: 'none',
-          cursor: 'pointer',
-          padding: 0,
-        }}
+        onClick={() => setMenuState(prev => ({ ...prev, isOpen: !prev.isOpen }))}
+        className="mobile-menu-button hamburger-icon"
         aria-label={isOpen ? 'メニューを閉じる' : 'メニューを開く'}
       >
-        <span style={{
-          display: 'block',
-          height: '2px',
-          width: '100%',
-          background: 'var(--foreground)',
-          transition: 'all 0.3s ease',
-          transform: isOpen ? 'rotate(45deg) translate(5px, 5px)' : 'none',
-        }} />
-        <span style={{
-          display: 'block',
-          height: '2px',
-          width: '100%',
-          background: 'var(--foreground)',
-          transition: 'all 0.3s ease',
-          opacity: isOpen ? '0' : '1',
-        }} />
-        <span style={{
-          display: 'block',
-          height: '2px',
-          width: '100%',
-          background: 'var(--foreground)',
-          transition: 'all 0.3s ease',
-          transform: isOpen ? 'rotate(-45deg) translate(7px, -6px)' : 'none',
-        }} />
+        <span className={`hamburger-line ${isOpen ? 'active' : ''}`} />
+        <span className={`hamburger-line ${isOpen ? 'active' : ''}`} />
+        <span className={`hamburger-line ${isOpen ? 'active' : ''}`} />
       </button>
       {portalEl && shouldRender && createPortal(
         <>
           {/* オーバーレイ（ヘッダーの外で描画） */}
           <div
-            className={`mobile-menu-overlay ${isOpen ? 'open' : ''}`}
-            style={{
-              position: 'fixed',
-              inset: 0,
-              zIndex: 9998,
-            }}
-            onClick={() => setIsOpen(false)}
+            className={`mobile-menu-overlay mobile-overlay ${isOpen ? 'open' : ''}`}
+            onClick={() => setMenuState(prev => ({ ...prev, isOpen: false }))}
           />
           {/* 画面上のハンバーガー位置に重ねた固定のクローズボタン */}
           {isOpen && closeRect && (
             <button
-              onClick={() => setIsOpen(false)}
+              onClick={() => setMenuState(prev => ({ ...prev, isOpen: false }))}
               aria-label="メニューを閉じる"
+              className="close-button"
               style={{
-                position: 'fixed',
                 top: `${closeRect.top}px`,
                 left: `${closeRect.left}px`,
                 width: `${closeRect.width}px`,
                 height: `${closeRect.height}px`,
-                zIndex: 10000,
-                background: 'transparent',
-                border: 'none',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'var(--foreground)',
-                fontSize: '22px',
-                lineHeight: 1,
+                zIndex: Z_INDEX.MOBILE_MENU_CLOSE_BTN,
               }}
             >
               ✕
@@ -154,44 +116,19 @@ export default function MobileMenu() {
 
           {/* メニュー本体（不透明白） */}
           <nav
-            className={`mobile-menu ${isOpen ? 'open' : ''}`}
+            className={`mobile-menu mobile-nav ${isOpen ? 'open' : ''}`}
             style={{
-              position: 'fixed',
-              top: 0,
-              right: 0,
-              width: '260px',
-              height: '100%',
-              background: '#ffffff',
-              borderLeft: '1px solid var(--border-color)',
-              boxShadow: '-4px 0 24px rgba(0, 0, 0, 0.25)',
-              padding: '24px',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '18px',
-              zIndex: 9999,
+              width: `${LAYOUT_CONSTANTS.MOBILE_MENU_WIDTH}px`,
+              zIndex: Z_INDEX.MOBILE_MENU,
             }}
             aria-label="モバイルメニュー"
           >
-            {/* 内部のクローズボタンは削除（ハンバーガー位置の固定ボタンで閉じる） */}
-            {[
-              { href: '#about', label: 'About' },
-              { href: '#works', label: 'Works' },
-              { href: '#team', label: 'Members' },
-              { href: '#history', label: 'History' },
-              { href: '#contact', label: 'Contact' },
-            ].map((item) => (
+            {NAVIGATION_LINKS.map((item) => (
               <a
                 key={item.href}
                 className="mobile-nav-link"
                 href={item.href}
-                onClick={() => setIsOpen(false)}
-                style={{
-                  padding: '12px 0',
-                  textDecoration: 'none',
-                  color: 'var(--foreground)',
-                  borderBottom: '1px solid var(--border-color)',
-                  fontSize: '16px',
-                }}
+                onClick={() => setMenuState(prev => ({ ...prev, isOpen: false }))}
               >
                 {item.label}
               </a>

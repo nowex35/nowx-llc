@@ -1,8 +1,12 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import type { ScrollAnimationOptions, ScrollAnimationResult } from '../types';
 
-export const useScrollAnimation = (threshold: number = 0.1) => {
+export const useScrollAnimation = (
+  options: ScrollAnimationOptions = {}
+): ScrollAnimationResult => {
+  const { threshold = 0.1, rootMargin = '0px 0px -50px 0px' } = options;
   const ref = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -20,7 +24,7 @@ export const useScrollAnimation = (threshold: number = 0.1) => {
       },
       {
         threshold,
-        rootMargin: '0px 0px -50px 0px',
+        rootMargin,
       }
     );
 
@@ -34,7 +38,7 @@ export const useScrollAnimation = (threshold: number = 0.1) => {
         observer.unobserve(currentRef);
       }
     };
-  }, [threshold, isVisible]);
+  }, [threshold, rootMargin, isVisible]);
 
   return { ref, isVisible };
 };

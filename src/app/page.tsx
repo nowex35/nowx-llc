@@ -1,17 +1,18 @@
 'use client';
 
 import { useScrollAnimation } from './components/useScrollAnimation';
+import { SCROLL_ANIMATION_DEFAULTS, LAYOUT_CONSTANTS } from './constants';
 import TypewriterText from './components/TypewriterText';
 
 export default function Home() {
-  const aboutAnimation = useScrollAnimation(0.3);
-  const worksAnimation = useScrollAnimation(0.3);
-  const teamAnimation = useScrollAnimation(0.3);
-  const historyAnimation = useScrollAnimation(0.3);
-  const contactAnimation = useScrollAnimation(0.3);
+  const aboutAnimation = useScrollAnimation({ threshold: SCROLL_ANIMATION_DEFAULTS.THRESHOLD });
+  const worksAnimation = useScrollAnimation({ threshold: SCROLL_ANIMATION_DEFAULTS.THRESHOLD });
+  const teamAnimation = useScrollAnimation({ threshold: SCROLL_ANIMATION_DEFAULTS.THRESHOLD });
+  const historyAnimation = useScrollAnimation({ threshold: SCROLL_ANIMATION_DEFAULTS.THRESHOLD });
+  const contactAnimation = useScrollAnimation({ threshold: SCROLL_ANIMATION_DEFAULTS.THRESHOLD });
 
   return (
-    <div id="home" className="container" style={{ maxWidth: 1040, margin: "0 auto", padding: "80px 20px 40px" }}>
+    <div id="home" className="container" style={{ maxWidth: LAYOUT_CONSTANTS.MAX_WIDTH, margin: "0 auto", padding: "80px 20px 40px" }}>
       <h1 style={{ position: "absolute", left: "-9999px", top: "-9999px" }}>合同会社nowX - つくば市のweb開発企業</h1>
 
       <section

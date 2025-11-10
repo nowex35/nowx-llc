@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import MobileMenu from "./components/MobileMenu";
+import { NAVIGATION_LINKS, LAYOUT_CONSTANTS, Z_INDEX } from './constants';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -66,13 +67,13 @@ export default function RootLayout({
           top: 0,
           left: 0,
           right: 0,
-          zIndex: 50,
+          zIndex: Z_INDEX.HEADER,
           background: "rgba(246, 246, 246, 0.8)",
           backdropFilter: "blur(10px)",
           borderBottom: "1px solid var(--border-color)",
         }}>
-          <nav style={{
-            maxWidth: 1040,
+          <nav className="header-nav" style={{
+            maxWidth: LAYOUT_CONSTANTS.MAX_WIDTH,
             margin: "0 auto",
             padding: "16px 20px",
             display: "flex",
@@ -96,11 +97,12 @@ export default function RootLayout({
               />
             </a>
             <div className="desktop-nav" style={{ display: "flex", gap: 12, color: "var(--foreground)", alignItems: "center" }}>
-              <a className="nav-link" href="#about">About</a>
-              <a className="nav-link" href="#works">Works</a>
-              <a className="nav-link" href="#team">Members</a>
-              <a className="nav-link" href="#history">History</a>
-              <a className="btn-cta" href="#contact">Contact</a>
+              {NAVIGATION_LINKS.slice(0, -1).map((link) => (
+                <a key={link.href} className="nav-link" href={link.href}>{link.label}</a>
+              ))}
+              <a className="btn-cta" href={NAVIGATION_LINKS[NAVIGATION_LINKS.length - 1].href}>
+                {NAVIGATION_LINKS[NAVIGATION_LINKS.length - 1].label}
+              </a>
             </div>
             <MobileMenu />
           </nav>
@@ -158,7 +160,7 @@ export default function RootLayout({
           borderTop: "1px solid var(--border-color)",
           padding: "32px 20px",
         }}>
-          <div style={{ maxWidth: 1040, margin: "0 auto", color: "var(--foreground)" }}>
+          <div style={{ maxWidth: LAYOUT_CONSTANTS.MAX_WIDTH, margin: "0 auto", color: "var(--foreground)" }}>
             <p style={{ fontWeight: 700 }}>合同会社nowX</p>
             <p>代表者：相澤颯</p>
             <p>〒305-0005 茨城県つくば市天久保3丁目14番地11 ヴィレッジコスモ101</p>

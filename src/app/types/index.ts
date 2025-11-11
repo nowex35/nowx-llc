@@ -12,7 +12,7 @@ export interface ScrollAnimationOptions {
 }
 
 export interface ScrollAnimationResult {
-  ref: React.RefObject<HTMLElement>;
+  ref: React.MutableRefObject<HTMLElement | null>;
   isVisible: boolean;
 }
 

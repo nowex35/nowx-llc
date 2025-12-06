@@ -36,7 +36,7 @@ export default function Home() {
         style={{ padding: "60px 0", borderTop: "1px solid var(--border-color)" }}
       >
         <h2 style={{ fontSize: 24, marginBottom: 12 }}>
-          {aboutAnimation.isVisible && <TypewriterText text="About" speed={100} />}
+          About
         </h2>
         <p style={{ lineHeight: 1.9 }}>
           {aboutAnimation.isVisible && (
@@ -56,7 +56,7 @@ export default function Home() {
         style={{ padding: "60px 0", borderTop: "1px solid var(--border-color)" }}
       >
         <h2 style={{ fontSize: 24, marginBottom: 12 }}>
-          {worksAnimation.isVisible && <TypewriterText text="Works" speed={100} />}
+          Works
         </h2>
         <div style={{ display: "grid", gap: 24 }}>
           <div style={{ marginBottom: 16 }}>
@@ -111,7 +111,7 @@ export default function Home() {
         style={{ padding: "60px 0", borderTop: "1px solid var(--border-color)" }}
       >
         <h2 style={{ fontSize: 24, marginBottom: 12 }}>
-          {teamAnimation.isVisible && <TypewriterText text="Members" speed={100} />}
+          Members
         </h2>
         <div style={{ display: "grid", gap: 16 }}>
           <span>{teamAnimation.isVisible && <TypewriterText text="代表" delay={500} speed={100} />}</span>
@@ -128,7 +128,7 @@ export default function Home() {
         style={{ padding: "60px 0", borderTop: "1px solid var(--border-color)" }}
       >
         <h2 style={{ fontSize: 24, marginBottom: 12 }}>
-          {historyAnimation.isVisible && <TypewriterText text="History" speed={100} />}
+          History
         </h2>
         <p style={{ lineHeight: 1.9 }}>
           {historyAnimation.isVisible && <TypewriterText text="2025.10 設立" delay={500} speed={80} />}
@@ -143,7 +143,7 @@ export default function Home() {
         style={{ padding: "60px 0", borderTop: "1px solid var(--border-color)" }}
       >
         <h2 style={{ fontSize: 24, marginBottom: 12 }}>
-          {contactAnimation.isVisible && <TypewriterText text="Contact" speed={100} />}
+          Contact
         </h2>
         <p style={{ lineHeight: 1.9 }}>
           {contactAnimation.isVisible && <TypewriterText text="お問い合わせはメールにてご連絡ください。" delay={500} speed={50} />}

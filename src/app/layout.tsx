@@ -134,7 +134,7 @@ export default function RootLayout({
               },
               "contactPoint": {
                 "@type": "ContactPoint",
-                "email": "hayate-aizawa@nowx-llc.com",
+                "email": "info@nowx-llc.com",
                 "contactType": "customer service"
               },
               "sameAs": [],

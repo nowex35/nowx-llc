@@ -149,8 +149,8 @@ export default function Home() {
           {contactAnimation.isVisible && <TypewriterText text="お問い合わせはメールにてご連絡ください。" delay={500} speed={50} />}
         </p>
         <p>
-          {contactAnimation.isVisible && <TypewriterText text="代表者メール:" delay={2000} speed={80} />}
-          <a href="mailto:hayate-aizawa@nowx-llc.com">
+          {contactAnimation.isVisible && <TypewriterText text="お問い合わせメール:" delay={2000} speed={80} />}
+          <a href="mailto:info@nowx-llc.com">
             {contactAnimation.isVisible && <TypewriterText text="hayate-aizawa@nowx-llc.com" delay={3000} speed={60} />}
           </a>
         </p>
